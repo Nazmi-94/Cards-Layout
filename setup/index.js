@@ -33,7 +33,6 @@ loadmore.addEventListener("click",()=>{
 
 filterSource.forEach((source)=>{
     source.addEventListener("click", ()=>{
-        const nameValue = document.querySelector('input[name="filterBySource"]')
     
         if(source.value !== "all"){
             deleteCards()
@@ -45,8 +44,10 @@ filterSource.forEach((source)=>{
             checkedTheme()
             handlingLikes()
         }else if(source.value === "all"){
+		deleteCards()
             for(let i = 0; i < data.length; i++){
                 createCard(data[i],icons)
+		checkedTheme()
             }
             keepTrack()
         }
@@ -156,7 +157,6 @@ function listedCard(){
 
 
 function changeColumns(target){
-    console.log(target)
     if(target === "dynamic"){
         layoutPlaceholder.style.gridTemplateColumns = `repeat(4,minmax(150px, auto))`;
     }else{
